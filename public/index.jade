@@ -1,0 +1,13 @@
+doctype html(lang='fr')
+head
+    meta(charset='UTF-8')
+    title SP Admin Panel
+  body
+    h1 Superpowers Admin Panel
+    p #{servStatus}
+    form(action='/', method='post')
+      div
+        label(for='link') URL :
+        input#link(type='text', name='updatelink')
+      .button
+        button(type='submit') Mettre &agrave; jour SP

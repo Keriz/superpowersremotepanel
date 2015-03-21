@@ -1,0 +1,15 @@
+#!/bin/bash
+WORKINGDIR="Documents/test"
+cd ~
+cd $WORKINGDIR
+rm -r "superpowers"
+wget $1 -O "sup"
+filename=$(unzip -qql "sup" | head -n1 | tr -s ' ' | cut -d' ' -f5-)
+unzip "sup"
+mv $filename "superpowers"
+rm -r "sup"
+chmod -R 777 "superpowers"
+cd "superpowers/app/server/"
+forever stop start.js
+forever start start.js
+echo "Running !"
