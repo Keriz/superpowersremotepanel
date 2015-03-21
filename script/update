@@ -1,15 +1,15 @@
 #!/bin/bash
 WORKINGDIR=""
-cd ~
+cd "~"
 #cd $WORKINGDIR
-rm -r "superpowers"
-wget -q $1 -O "sup"
+sudo rm -r "superpowers"
+sudo wget -q $1 -O "sup"
 filename=$(unzip -qql "sup" | head -n1 | tr -s ' ' | cut -d' ' -f5-)
-unzip "sup"
-mv $filename "superpowers"
-rm -r "sup"
-chmod -R 777 "superpowers"
+sudo unzip -q "sup"
+sudo mv $filename "superpowers"
+sudo rm -r "sup"
+sudo chmod -R 777 "superpowers"
 cd "superpowers/app/server/"
-forever stop start.js
-forever start start.js
+sudo forever stop start.js
+sudo forever start start.js
 echo "Running !"
