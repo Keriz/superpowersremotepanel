@@ -3,7 +3,7 @@ WORKINGDIR=""
 cd ~
 #cd $WORKINGDIR
 rm -r "superpowers"
-wget $1 -O "sup"
+wget -q $1 -O "sup"
 filename=$(unzip -qql "sup" | head -n1 | tr -s ' ' | cut -d' ' -f5-)
 unzip "sup"
 mv $filename "superpowers"
