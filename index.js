@@ -8,7 +8,7 @@ var ping = require ("net-ping");
 var session = ping.createSession({timeout: 5000});
 var serverStatus;
 
-var host = "192.168.100.124";
+var host = "192.168.100.174";
 
 session.pingHost(host, function (error, target){
 	if (error)
