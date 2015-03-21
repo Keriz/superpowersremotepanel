@@ -1,6 +1,6 @@
 #!/bin/bash
 WORKINGDIR=""
-cd "~"
+cd 
 #cd $WORKINGDIR
 sudo rm -r "superpowers"
 sudo wget -q $1 -O "sup"
