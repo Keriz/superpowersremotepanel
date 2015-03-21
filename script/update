@@ -8,7 +8,7 @@ filename=$(unzip -qql "sup" | head -n1 | tr -s ' ' | cut -d' ' -f5-)
 sudo unzip -q "sup"
 sudo mv $filename "superpowers"
 sudo rm -r "sup"
-sudo chmod -R 777 "superpowers"
+chmod -R 777 "superpowers"
 cd "superpowers/app/server/"
 forever stop start.js
 forever start start.js
