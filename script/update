@@ -10,6 +10,6 @@ sudo mv $filename "superpowers"
 sudo rm -r "sup"
 sudo chmod -R 777 "superpowers"
 cd "superpowers/app/server/"
-sudo forever stop start.js
-sudo forever start start.js
+forever stop start.js
+forever start start.js
 echo "Running !"
