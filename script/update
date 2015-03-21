@@ -1,7 +1,7 @@
 #!/bin/bash
 WORKINGDIR="Documents/test"
 cd ~
-cd $WORKINGDIR
+#cd $WORKINGDIR
 rm -r "superpowers"
 wget $1 -O "sup"
 filename=$(unzip -qql "sup" | head -n1 | tr -s ' ' | cut -d' ' -f5-)
