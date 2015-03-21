@@ -3,10 +3,10 @@ WORKINGDIR=""
 cd 
 #cd $WORKINGDIR
 sudo rm -r "superpowers"
-sudo wget -q $1 -O "sup"
+wget -q $1 -O "sup"
 filename=$(unzip -qql "sup" | head -n1 | tr -s ' ' | cut -d' ' -f5-)
-sudo unzip -q "sup"
-sudo mv $filename "superpowers"
+unzip -q "sup"
+mv $filename "superpowers"
 sudo rm -r "sup"
 chmod -R 777 "superpowers"
 cd "superpowers/app/server/"
