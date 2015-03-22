@@ -35,7 +35,7 @@ app.get('/', function (req, res){
 });
 
 app.post('/', function (req, res){
-	exec('./script/update ' + req.body.updatelink, function (error, stdout, stderr){
+	exec('./script/update ' + req.body.updatelink, {uid: 1000},function (error, stdout, stderr){
 		console.log('stdout: ' + stdout);
 		console.log('stderr: ' + stderr);
 
