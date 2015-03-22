@@ -22,7 +22,7 @@ var j = schedule.scheduleJob({hour: 1, minute:0}, function(){
 		if (error)
 			serverStatus = error;
 		else
-			serverStatus = "Alive !";	
+			serverStatus = "Alive   !";	
 	});
  });
 
