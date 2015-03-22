@@ -3,7 +3,9 @@ head
     meta(charset='UTF-8')
     title SP Admin Panel
   body
-    h1 Superpowers Admin Panel
+    h1 Superpowers Remote Panel
+    script(src="/socket.io/socket.io.js")
+    script(src="javascript/client.js")
     p #{servStatus}
     form(action='/', method='post')
       div

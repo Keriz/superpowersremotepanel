@@ -1,15 +1,21 @@
 #!/bin/bash
+set -o allexport
+urllink=$1
+su pi <<'EOF'
 WORKINGDIR=""
-cd 
-#cd $WORKINGDIR
-rm -r "superpowers"
-wget -q $1 -O "sup"
+serverpath="superpowers/app/server/"
+cd
+cd "$serverpath"
+forever stop start.js
+cd
+sudo rm -r "superpowers"
+wget -q $urllink -O "sup"
 filename=$(unzip -qql "sup" | head -n1 | tr -s ' ' | cut -d' ' -f5-)
 unzip -q "sup"
 mv $filename "superpowers"
 rm -r "sup"
-chmod -R 777 "superpowers"
-cd "superpowers/app/server/"
-forever stop start.js
+chmod -R 755 "superpowers"
+cd "$serverpath"
 forever start start.js
-echo "Running !"
+echo "Rebuilt and now running..."
+EOF

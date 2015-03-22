@@ -8,6 +8,14 @@ var ping = require ("net-ping");
 var session = ping.createSession({timeout: 5000});
 var serverStatus;
 
+var server = app.listen(3000, function(){
+	var host = server.address().address;
+	var port = server.address().port;
+	console.log('Running on http://%s:%s', host, port);
+})
+
+var io = require('socket-io').listen(server);
+
 var host = "192.168.100.174";
 
 session.pingHost(host, function (error, target){
@@ -22,7 +30,7 @@ var j = schedule.scheduleJob({hour: 1, minute:0}, function(){
 		if (error)
 			serverStatus = error;
 		else
-			serverStatus = "Alive   !";	
+			serverStatus = "Alive !";	
 	});
  });
 
@@ -42,14 +50,7 @@ app.post('/', function (req, res){
 		if (error !== null){
 			console.log('exec error: ' + error);
 		}
-	  res.render('index', {servStatus: serverStatus});
+	  
 	})
-
-
+	res.render('index', {servStatus: serverStatus});
 });
-
-var server = app.listen(3000, function(){
-	var host = server.address().address;
-	var port = server.address().port;
-	console.log('Running on http://%s:%s', host, port);
-})
