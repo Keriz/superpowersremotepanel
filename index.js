@@ -14,7 +14,7 @@ var server = app.listen(3000, function(){
 	console.log('Running on http://%s:%s', host, port);
 })
 
-var io = require('socket-io').listen(server);
+var io = require('socket.io').listen(server);
 
 var host = "192.168.100.174";
 
