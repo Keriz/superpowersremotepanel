@@ -13,7 +13,6 @@ var onPluginsReceived = function (pluginList){
         //Si on veut mettre du contenu dans la cellule créée, ça se passe ici (sinon il suffit de supprimer cette ligne)
        td.innerHTML = pluginList;
     }
-     
     //On ajoute la ligne créée au tableau : attention, sur firefox on peut ajouter directement au tableau, mais IE ajoute par défaut un noeud tbody à la table
     if(tableau.firstChild.tagName == 'TBODY'){
         tableau.firstChild.appendChild(tr);
