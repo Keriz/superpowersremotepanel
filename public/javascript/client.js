@@ -10,7 +10,6 @@ var onPluginsReceived = function (pluginList){
     for(var i=0; i<tds; i++){
         var td = document.createElement('td');
         tr.appendChild(td);
-         
         //Si on veut mettre du contenu dans la cellule créée, ça se passe ici (sinon il suffit de supprimer cette ligne)
        td.innerHTML = pluginList;
     }
