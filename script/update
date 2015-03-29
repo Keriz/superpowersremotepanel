@@ -1,7 +1,7 @@
 #!/bin/bash
 set -o allexport
 urllink=$1
-su pi <<'EOF'
+su guillaume <<'EOF'
 WORKINGDIR=""
 serverpath="superpowers/app/server/"
 cd
