@@ -62,7 +62,7 @@ app.post('/', function (req, res){
 		console.log('stderr: ' + stderr);
 
 		if (error !== null){
-			console.log('exec error: ' + error);
+			console.log('execute error: ' + error);
 		}
 	  
 	})
