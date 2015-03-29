@@ -5,7 +5,7 @@ var schedule = require('node-schedule');
 var app = express();
 
 var request = require('request-json');
-var client = request.createClient('http://localhost:12000');
+var client = request.createClient('http://127.0.0.1:12000');
 
 var ping = require ("net-ping");
 var session = ping.createSession({timeout: 5000});
@@ -24,8 +24,8 @@ var pluginList = {};
 io.on('connection', function(socket){
 	socket.emit('connect');
 	client.get('/plugins.json', function(err, res, body) {
-		pluginList = body.all;
-		socket.emit('pluginList', pluginList);
+//		pluginList = body.all;
+//		socket.emit('pluginList', pluginList);
 	});
 });
 
