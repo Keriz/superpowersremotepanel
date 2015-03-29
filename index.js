@@ -19,13 +19,13 @@ var server = app.listen(7200, function(){
 
 var io = require('socket.io').listen(server);
 
-//var pluginList = {};
+var pluginList = {};
 
 io.on('connection', function(socket){
 	socket.emit('connect');
 	client.get('/plugins.json', function(err, res, body) {
-//		pluginList = body.all;
-//		socket.emit('pluginList', pluginList);
+		pluginList = body.all;
+		socket.emit('pluginList', pluginList);
 	});
 });
 
