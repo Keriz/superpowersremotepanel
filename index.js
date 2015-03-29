@@ -4,17 +4,30 @@ var exec = require('child_process').exec;
 var schedule = require('node-schedule');
 var app = express();
 
+var request = require('request-json');
+var client = request.createClient('http://localhost:12000');
+
 var ping = require ("net-ping");
 var session = ping.createSession({timeout: 5000});
 var serverStatus;
 
-var server = app.listen(3000, function(){
+var server = app.listen(7200, function(){
 	var host = server.address().address;
 	var port = server.address().port;
 	console.log('Running on http://%s:%s', host, port);
 })
 
 var io = require('socket.io').listen(server);
+
+var pluginList = {};
+
+io.on('connection', function(socket){
+	socket.emit('connect');
+	client.get('/plugins.json', function(err, res, body) {
+		pluginList = body.all;
+		socket.emit('pluginList', pluginList);
+	});
+});
 
 var host = "192.168.100.174";
 
@@ -35,8 +48,9 @@ var j = schedule.scheduleJob({hour: 1, minute:0}, function(){
  });
 
 app.set('view engine', 'jade');
-app.set('views', './public/');
+app.set('views', './public');
 app.use(bodyParser());
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res){
 	res.render('index', {servStatus: serverStatus});

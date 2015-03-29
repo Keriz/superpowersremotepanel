@@ -5,8 +5,13 @@ head
   body
     h1 Superpowers Remote Panel
     script(src="/socket.io/socket.io.js")
-    script(src="javascript/client.js")
+    script(type="text/javascript", src="/javascript/client.js")
     p #{servStatus}
+    table#plugins
+      tr
+        td
+      tr
+        td
     form(action='/', method='post')
       div
         label(for='link') URL :
