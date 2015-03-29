@@ -29,7 +29,7 @@ io.on('connection', function(socket){
 	});
 });
 
-var host = "192.168.100.174";
+var host = "127.0.0.1";
 
 session.pingHost(host, function (error, target){
 	if (error)
