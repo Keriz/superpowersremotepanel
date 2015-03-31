@@ -24,7 +24,7 @@ var pluginList = {};
 io.on('connection', function(socket){
 	socket.emit('connect');
 	client.get('/plugins.json', function(err, res, body) {
-		pluginList = body.all;
+		pluginList = body;
 		socket.emit('pluginList', pluginList);
 	});
 });
