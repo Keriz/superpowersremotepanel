@@ -7,17 +7,14 @@ head
     script(src="/socket.io/socket.io.js")
     script(type="text/javascript", src="/javascript/client.js")
     p #{servStatus}
-    table#plugins
-      tr
-        td
-      tr
-        td
-    form(action='/', method='post')
+    form#updateSP(action='/', method='post')
       div
         label(for='link') URL :
         input#link(type='text', name='updatelink')
       .button
         button(type='submit') Mettre &agrave; jour SP
-    form(action='/') 
-        select#pluginVendors(onchange="selectAuthorChanged(this.options[this.selectedIndex].text)")
-        select#pluginFromVendor
+    form#plugins(action='/') 
+      select#pluginVendors(onchange='selectAuthorChanged(this.options[this.selectedIndex].text)' name='pluginVendors')
+      select#pluginFromVendor(name='pluginFromVendor')
+      button(type='button', onclick='buttonRemovePlugin()', name='Remove')  Remove
+      button(type='button', onclick='buttonRemovePlugin()', name='Disable') Disable

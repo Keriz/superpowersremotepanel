@@ -21,12 +21,19 @@ var io = require('socket.io').listen(server);
 
 var pluginList = {};
 
+//TOREMOVE	
+var onRemovePlugin = function(data){
+	console.log(data);
+}
+
 io.on('connection', function(socket){
 	socket.emit('connect');
 	client.get('/plugins.json', function(err, res, body) {
 		pluginList = body;
 		socket.emit('pluginList', pluginList);
 	});
+	//TOCHECK
+	socket.on('removePlugin', onRemovePlugin);
 });
 
 var host = "127.0.0.1";
