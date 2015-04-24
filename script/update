@@ -16,6 +16,6 @@ mv $filename "superpowers"
 rm -r "sup"
 chmod -R 755 "superpowers"
 cd "$serverpath"
-forever-service install start.js
+forever install start.js
 echo "Rebuilt and now running..."
 EOF
