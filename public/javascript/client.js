@@ -23,7 +23,7 @@ var onPluginsReceived = function (pluginList){
 }
 
 var onLogReceived = function (buttonLog, log){
-
+    //TODO
 }
 
 function selectAuthorChanged(newAuthor){
