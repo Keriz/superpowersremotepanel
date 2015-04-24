@@ -1,5 +1,6 @@
 var socket = io();
 var plugins = {};
+//GIT COMMENT: v1
 
 var onPluginsReceived = function (pluginList){
     var pluginsPaths = pluginList.all;
