@@ -6,7 +6,7 @@ WORKINGDIR=""
 serverpath="superpowers/app/server/"
 cd
 cd "$serverpath"
-forever-service delete start.js
+forever stop start.js
 cd
 sudo rm -r "superpowers"
 wget -q $urllink -O "sup"
@@ -16,6 +16,6 @@ mv $filename "superpowers"
 rm -r "sup"
 chmod -R 755 "superpowers"
 cd "$serverpath"
-forever install start.js
+forever start start.js
 echo "Rebuilt and now running..."
 EOF
