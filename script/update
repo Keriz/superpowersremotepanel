@@ -6,7 +6,7 @@ WORKINGDIR=""
 serverpath="superpowers/app/server/"
 cd
 cd "$serverpath"
-forever stop index.js
+forever stop superpowers
 cd
 sudo rm -r "superpowers"
 wget -q $urllink -O "sup"
@@ -16,6 +16,6 @@ mv $filename "superpowers"
 rm -r "sup"
 chmod -R 755 "superpowers"
 cd "$serverpath"
-forever start index.js
+forever start --uid "superpowers" index.js
 echo "Rebuilt and now running..."
 EOF

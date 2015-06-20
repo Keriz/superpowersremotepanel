@@ -1,7 +1,7 @@
 doctype html(lang='fr')
 head
     meta(charset='UTF-8')
-    title SP Admin Panel
+    title SRPanel
   body
     h1 Superpowers Remote Panel
     script(src="/socket.io/socket.io.js")
@@ -12,7 +12,7 @@ head
         label(for='link') URL :
         input#link(type='text', name='updatelink')
       .button
-        button(type='submit') Mettre &agrave; jour SP
+        button(type='submit') Update SP
     form#plugins(action='/') 
       select#pluginVendors(onchange='selectAuthorChanged(this.options[this.selectedIndex].text)' name='pluginVendors')
       select#pluginFromVendor(name='pluginFromVendor')

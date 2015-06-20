@@ -7,8 +7,6 @@ var app = express();
 var request = require('request-json');
 var client = request.createClient('http://127.0.0.1:12000');
 
-var ping = require ("net-ping");
-var session = ping.createSession({timeout: 5000});
 var serverStatus;
 
 var server = app.listen(7200, function(){
@@ -21,37 +19,36 @@ var io = require('socket.io').listen(server);
 
 var pluginList = {};
 
-//TOREMOVE	
 var onRemovePlugin = function(data){
+	exec('./script/remove ' + data.pluginAuthor + ' ' + data.pluginName, {uid: 1000},function (error, stdout, stderr){
+		console.log('stdout: ' + stdout);
+		console.log('stderr: ' + stderr);
+
+		if (error !== null){
+			console.log('execute error: ' + error);
+		}
+	});
+
 	console.log(data);
 }
 
 io.on('connection', function(socket){
+
 	socket.emit('connect');
 	client.get('/plugins.json', function(err, res, body) {
 		pluginList = body;
 		socket.emit('pluginList', pluginList);
 	});
-	//TOCHECK
+
 	socket.on('removePlugin', onRemovePlugin);
 });
 
 var host = "127.0.0.1";
 
-session.pingHost(host, function (error, target){
-	if (error)
-		serverStatus = error;
-	else
-		serverStatus = "Alive !";	
-}); 
+serverStatus = "Alive !";	
 
 var j = schedule.scheduleJob({hour: 1, minute:0}, function(){
-	session.pingHost(host, function (error, target){
-		if (error)
-			serverStatus = error;
-		else
-			serverStatus = "Alive !";	
-	});
+	serverStatus = "Alive !";	
  });
 
 app.set('view engine', 'jade');
@@ -72,6 +69,12 @@ app.post('/', function (req, res){
 			console.log('execute error: ' + error);
 		}
 	  
-	})
+	});
 	res.render('index', {servStatus: serverStatus});
 });
+
+function execute(command, callback){
+	exec(command, {uid: 1000}, function (error, stdout, stderr)){
+		callback(stdout);
+	});
+}

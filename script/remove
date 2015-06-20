@@ -1,1 +1,22 @@
 #!/bin/bash
+set -o allexport
+author=$1
+plugin=$2
+pluginpath="superpowers/app/plugins/"
+serverpath="superpowers/app/server/"
+#check that $USER is working as expected
+su $USER <<'EOF'
+WORKINGDIR="/home/guillaume/Documents/"
+cd
+cd "$WORKINGDIR"
+cd "$pluginpath"
+cd "$author"
+sudo rm -r "$plugin"
+cd
+cd "$WORKINGDIR"
+cd "$serverpath"
+#forever stop index.js
+#forever start index.js
+cd
+echo "Plugin removed and started succesfuly..."
+EOF
