@@ -74,7 +74,7 @@ app.post('/', function (req, res){
 });
 
 function execute(command, callback){
-	exec(command, {uid: 1000}, function (error, stdout, stderr)){
+	exec(command, {uid: 1000}, function (error, stdout, stderr){
 		callback(stdout);
 	});
 }
